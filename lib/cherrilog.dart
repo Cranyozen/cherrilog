@@ -42,6 +42,8 @@ class CherriLog {
       logger.flush();
     }
 
+    // TODO: Implement flush interval
+
     return this;
   }
 }

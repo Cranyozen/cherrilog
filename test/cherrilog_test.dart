@@ -2,15 +2,37 @@ import 'package:cherrilog/cherrilog.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('A group of tests', () {
-    final awesome = Awesome();
-
+  group('A group of normal logs', () {
     setUp(() {
-      // Additional setup goes here.
+      CherriLog.init(
+        options: CherriOptions()
+          ..maximumLevel = CherriLogLevel.off
+          ..minimumLevel = CherriLogLevel.all
+          ..timeStampPattern = CherriFormatterTimeStampPattern.standardLongDateTime
+          ..useBuffer = false,
+      ).logTo(CherriConsole());
+
+      expect(CherriLog.instance, isNotNull);
     });
 
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
+    test('debug level', () {
+      debug('You are doing something right');
+    });
+
+    test('info level', () {
+      info('You are doing something');
+    });
+
+    test('warning level', () {
+      warning('You are doing something wrong');
+    });
+
+    test('error level', () {
+      error('You can not shutdown power');
+    });
+
+    test('fatal level', () {
+      fatal('The power is off');
     });
   });
 }

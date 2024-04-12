@@ -1,20 +1,27 @@
 /// Cherri log levels.
 /// Ranking of importance from highest to lowest
+///
+/// # WARN !!!
+///
+/// Don't change the order of the enum values, it will break the log level comparison.
 enum CherriLogLevel {
   /// All log level.
   all('ALL'),
 
+  /// Fatal log level.
+  fatal('FTL'),
+
   /// Error log level.
-  error('ERROR'),
+  error('ERR'),
 
   /// Warning log level.
-  warning('WARNING'),
+  warning('WAR'),
 
   /// Info log level.
-  info('INFO'),
+  info('INF'),
 
   /// Debug log level.
-  debug('DEBUG'),
+  debug('DBG'),
 
   /// Off log level.
   off('OFF');

@@ -1,6 +1,5 @@
-import 'loglevel.dart';
+import 'package:cherrilog/model/log_level.dart';
 
-/// Base class for all messages
 class CherriMessage {
   CherriLogLevel logLevel;
   String? className;
@@ -9,6 +8,5 @@ class CherriMessage {
   DateTime timestamp;
   StackTrace? stackTrace;
 
-  CherriMessage(this.logLevel, this.message, this.timestamp,
-      {this.className, this.methodName, this.stackTrace});
+  CherriMessage(this.logLevel, this.message, this.timestamp, {this.className, this.methodName, this.stackTrace});
 }

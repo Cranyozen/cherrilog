@@ -1,1 +1,1 @@
-class CherriLogger {}
+abstract class CherriLogger {}

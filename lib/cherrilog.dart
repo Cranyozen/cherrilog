@@ -1,53 +1,49 @@
 library;
 
-import 'package:cherrilog/formatter/message.dart';
 import 'package:cherrilog/logger/logger.dart';
-import 'package:cherrilog/model/option.dart';
+import 'package:cherrilog/model/options.dart';
 import 'package:cherrilog/model/message.dart';
 
 export 'package:cherrilog/cherrilog.dart';
 export 'package:cherrilog/wrapper.dart';
+export 'package:cherrilog/formatter/timestamp.dart';
 export 'package:cherrilog/logger/logger.dart';
+export 'package:cherrilog/logger/loggers/logger_console.dart';
+export 'package:cherrilog/model/options.dart';
+export 'package:cherrilog/model/log_level.dart';
 
 class CherriLog {
   static CherriLog? instance;
 
-  static CherriLog init({CherriOption? option}) {
-    var defaultOption = CherriOption();
-
-    instance = CherriLog().setOption(option ?? defaultOption);
+  static CherriLog init({CherriOptions? options}) {
+    instance = CherriLog().withOptions(options ?? CherriOptions());
 
     return instance!;
   }
 
-  late CherriOption option;
+  late CherriOptions options;
 
-  CherriLog setOption(CherriOption option) {
-    option = option;
+  CherriLog withOptions(CherriOptions options) {
+    this.options = options;
     return this;
   }
 
   late CherriLogger logger;
 
-  CherriLog setLogger(CherriLogger logger) {
-    logger = logger;
+  CherriLog logTo(CherriLogger logger) {
+    this.logger = logger.withOptions(options);
     return this;
   }
 
   CherriLog log(CherriMessage message) {
-    // TODO: Optimize here
-    var formatter = CherriFormatterMessageDefault(timestampPattern: 'MM-dd HH:mm:ss', costumeSplitter: ' ');
-    print(formatter.format(message));
+    logger.log(message);
+
+    if (options.useBuffer == false) {
+      logger.flush();
+    }
+
     return this;
   }
 }
 
-extension CherriLogExtensions on CherriLog {
-  CherriLog withOption(CherriOption option) {
-    return setOption(option);
-  }
-
-  CherriLog logTo(CherriLogger logger) {
-    return setLogger(logger);
-  }
-}
+extension CherriLogExtensions on CherriLog {}

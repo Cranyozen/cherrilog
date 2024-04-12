@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-class CherriFormatterTimestampPattern {
+class CherriFormatterTimeStampPattern {
   /// Pattern: `yyyy-MM-dd HH:mm:ss`
   ///     e.g: `2021-07-01 12:34:56`
   static const String standardLongDateTime = 'yyyy-MM-dd HH:mm:ss';
@@ -34,7 +34,7 @@ class CherriFormatterTimestampPattern {
   static const String reversedLongDate = 'MM/dd/yyyy';
 }
 
-class CherriFormatterTimestamp {
+class CherriFormatterTimeStamp {
   static String format(DateTime timestamp, String pattern) {
     return DateFormat(pattern).format(timestamp);
   }

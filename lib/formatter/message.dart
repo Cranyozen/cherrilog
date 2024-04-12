@@ -16,7 +16,7 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
   bool autoColorize;
 
   CherriFormatterMessageDefault({
-    this.timestampPattern = CherriFormatterTimestampPattern.standardLongDateTime,
+    this.timestampPattern = CherriFormatterTimeStampPattern.standardLongDateTime,
     this.costumeSplitter = '',
     this.costumeSplitterOpen = '[',
     this.costumeSplitterClose = ']',
@@ -26,7 +26,7 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
 
   @override
   String format(CherriMessage message) {
-    var timestamp = _addCostumeSplitter(CherriFormatterTimestamp.format(message.timestamp, timestampPattern));
+    var timestamp = _addCostumeSplitter(CherriFormatterTimeStamp.format(message.timestamp, timestampPattern));
     var logLevel = _addCostumeSplitter(message.logLevel.name);
     var className = _addCostumeSplitter(message.className);
     var methodName = _addCostumeSplitter(message.methodName);

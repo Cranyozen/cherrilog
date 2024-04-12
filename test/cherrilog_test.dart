@@ -4,7 +4,13 @@ import 'package:test/test.dart';
 void main() {
   group('A group of normal logs', () {
     setUp(() {
-      CherriLog.init();
+      CherriLog.init(
+        options: CherriOptions()
+          ..maximumLevel = CherriLogLevel.off
+          ..minimumLevel = CherriLogLevel.all
+          ..timeStampPattern = CherriFormatterTimeStampPattern.standardLongDateTime
+          ..useBuffer = false,
+      ).logTo(CherriConsole());
 
       expect(CherriLog.instance, isNotNull);
     });

@@ -1,5 +1,4 @@
 ﻿import 'package:cherrilog/cherrilog.dart';
-import 'package:cherrilog/model/log_level.dart';
 import 'package:cherrilog/model/message.dart';
 
 void fatal(String message, {Object? error, StackTrace? stackTrace}) {

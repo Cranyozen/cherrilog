@@ -16,26 +16,24 @@ class CherriLog {
   static CherriLog? instance;
 
   static CherriLog init({CherriOptions? options}) {
-    instance = CherriLog().withOptions(options ?? CherriOptions());
+    instance = CherriLog()..withOptions(options ?? CherriOptions());
 
     return instance!;
   }
 
   late CherriOptions options;
 
-  CherriLog withOptions(CherriOptions options) {
+  void withOptions(CherriOptions options) {
     this.options = options;
-    return this;
   }
 
   late CherriLogger logger;
 
-  CherriLog logTo(CherriLogger logger) {
-    this.logger = logger.withOptions(options);
-    return this;
+  void logTo(CherriLogger logger) {
+    this.logger = logger..withOptions(options);
   }
 
-  CherriLog log(CherriMessage message) {
+  void log(CherriMessage message) {
     logger.log(message);
 
     if (options.useBuffer == false) {
@@ -43,8 +41,6 @@ class CherriLog {
     }
 
     // TODO: Implement flush interval
-
-    return this;
   }
 }
 

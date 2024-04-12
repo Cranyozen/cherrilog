@@ -4,7 +4,7 @@ import 'package:cherrilog/model/message.dart';
 
 class CherriConsole extends CherriLogger {
   @override
-  CherriLogger log(CherriMessage message) {
+  void log(CherriMessage message) {
     var formatter = CherriFormatterMessageDefault(
       timestampPattern: options.timeStampPattern,
       costumeSplitter: ' ',
@@ -17,12 +17,8 @@ class CherriConsole extends CherriLogger {
     if (le && be) {
       print(formatter.format(message));
     }
-
-    return this;
   }
 
   @override
-  CherriLogger flush() {
-    return this;
-  }
+  void flush() {}
 }

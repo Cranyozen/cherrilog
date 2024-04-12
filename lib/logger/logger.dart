@@ -4,12 +4,11 @@ import 'package:cherrilog/model/message.dart';
 abstract class CherriLogger {
   late CherriOptions options;
 
-  CherriLogger withOptions(CherriOptions options) {
+  void withOptions(CherriOptions options) {
     this.options = options;
-    return this;
   }
 
-  CherriLogger log(CherriMessage message);
+  void log(CherriMessage message);
 
-  CherriLogger flush();
+  void flush();
 }

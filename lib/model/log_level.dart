@@ -29,4 +29,10 @@ enum CherriLogLevel {
   const CherriLogLevel(this.name);
 
   final String name;
+
+  // The use of index comparison levels is not elegant enough.
+  bool operator >(CherriLogLevel other) => other.index > index;
+  bool operator >=(CherriLogLevel other) => other.index >= index;
+  bool operator <(CherriLogLevel other) => other.index < index;
+  bool operator <=(CherriLogLevel other) => other.index <= index;
 }

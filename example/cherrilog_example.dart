@@ -1,7 +1,11 @@
 import 'package:cherrilog/cherrilog.dart';
 
 void main() {
-  CherriLog.init();
+  CherriLog.init(
+    options: CherriOptions()
+      ..maximumLevel = CherriLogLevel.all
+      ..minimumLevel = CherriLogLevel.off,
+  ).logTo(CherriConsole());
 
   debug('You are doing something right');
 

@@ -1,3 +1,4 @@
-## 1.0.0
+## 0.1.0
 
-- Initial version.
+Initial release of CherriLog.  
+- Basic logging functionality.

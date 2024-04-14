@@ -1,26 +1,28 @@
-﻿class CherriLogLevel {
-  static CherriLogLevel any = CherriLogLevel('Any', 'ANY');
+﻿import 'dart:math' as math show max, min;
 
-  static CherriLogLevel fatal = CherriLogLevel('Fatal', 'FTL')..ansiColor = '91m';
+class CherriLogLevel {
+  static CherriLogLevel max = CherriLogLevel('Max', 'MAX');
 
-  static CherriLogLevel error = CherriLogLevel('Error', 'ERR')..ansiColor = '31m';
+  static CherriLogLevel fatal = CherriLogLevel('Fatal', 'FTL', ansiColor: '91m');
 
-  static CherriLogLevel warning = CherriLogLevel('Warning', 'WAR')..ansiColor = '33m';
+  static CherriLogLevel error = CherriLogLevel('Error', 'ERR', ansiColor: '31m');
 
-  static CherriLogLevel info = CherriLogLevel('Info', 'INF')..ansiColor = '32m';
+  static CherriLogLevel warning = CherriLogLevel('Warning', 'WAR', ansiColor: '33m');
 
-  static CherriLogLevel debug = CherriLogLevel('Debug', 'DBG')..ansiColor = '34m';
+  static CherriLogLevel info = CherriLogLevel('Info', 'INF', ansiColor: '32m');
 
-  static CherriLogLevel all = CherriLogLevel('All', 'ALL');
+  static CherriLogLevel debug = CherriLogLevel('Debug', 'DBG', ansiColor: '34m');
+
+  static CherriLogLevel min = CherriLogLevel('Min', 'MIN');
 
   static List<CherriLogLevel> order = [
-    CherriLogLevel.any,
+    CherriLogLevel.max,
     CherriLogLevel.fatal,
     CherriLogLevel.error,
     CherriLogLevel.warning,
     CherriLogLevel.info,
     CherriLogLevel.debug,
-    CherriLogLevel.all,
+    CherriLogLevel.min,
   ];
 
   static void insertLevelAfter(CherriLogLevel origin, CherriLogLevel level) {
@@ -39,21 +41,13 @@
 
   String get ansiColorTemplate => "\x1B[$ansiColor@message\x1B[0m";
 
-  CherriLogLevel(this.name, this.abbreviation);
+  CherriLogLevel(this.name, this.abbreviation, {this.ansiColor});
 
-  bool operator >(CherriLogLevel other) {
-    return order.indexOf(this) > order.indexOf(other);
-  }
-
-  bool operator >=(CherriLogLevel other) {
-    return order.indexOf(this) >= order.indexOf(other);
-  }
-
-  bool operator <(CherriLogLevel other) {
-    return order.indexOf(this) < order.indexOf(other);
-  }
-
-  bool operator <=(CherriLogLevel other) {
-    return order.indexOf(this) <= order.indexOf(other);
+  bool inRange((CherriLogLevel, CherriLogLevel) range) {
+    var indexA = order.indexOf(range.$1);
+    var indexB = order.indexOf(range.$2);
+    var maxIndex = math.max(indexA, indexB);
+    var minIndex = math.min(indexA, indexB);
+    return order.indexOf(this) >= minIndex && order.indexOf(this) <= maxIndex;
   }
 }

@@ -10,11 +10,7 @@ class CherriConsole extends CherriLogger {
       costumeSplitter: ' ',
     );
 
-    var le = message.logLevel <= options.maximumLevel;
-
-    var be = message.logLevel >= options.minimumLevel;
-
-    if (le && be) {
+    if (message.logLevel.inRange(options.logLevelRange)) {
       print(formatter.format(message));
     }
   }

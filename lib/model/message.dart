@@ -1,4 +1,4 @@
-import 'package:cherrilog/model/log_level.dart';
+import 'package:cherrilog/level/log_level.dart';
 
 class CherriMessage {
   CherriLogLevel logLevel;

@@ -1,0 +1,68 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640">
+    <rect width="100%" height="100%" fill="#14233B" />
+
+    <line x1="40" y1="-10" x2="-10" y2="40" stroke="#55C3F3" stroke-width="10" />
+    <line x1="80" y1="-10" x2="-10" y2="80" stroke="#55C3F3" stroke-width="10" />
+    <line x1="120" y1="-10" x2="-10" y2="120" stroke="#55C3F3" stroke-width="10" />
+    <line x1="160" y1="-10" x2="-10" y2="160" stroke="#55C3F3" stroke-width="10" />
+    <line x1="200" y1="-10" x2="-10" y2="200" stroke="#55C3F3" stroke-width="10" />
+    <line x1="240" y1="-10" x2="-10" y2="240" stroke="#55C3F3" stroke-width="10" />
+    <line x1="280" y1="-10" x2="-10" y2="280" stroke="#55C3F3" stroke-width="10" />
+    <line x1="320" y1="-10" x2="-10" y2="320" stroke="#55C3F3" stroke-width="10" />
+    <line x1="360" y1="-10" x2="-10" y2="360" stroke="#55C3F3" stroke-width="10" />
+    <line x1="400" y1="-10" x2="-10" y2="400" stroke="#55C3F3" stroke-width="10" />
+    <line x1="440" y1="-10" x2="-10" y2="440" stroke="#55C3F3" stroke-width="10" />
+
+    <line x1="1290" y1="600" x2="1240" y2="650" stroke="#FEFEFE" stroke-width="10" />
+    <line x1="1290" y1="560" x2="1200" y2="650" stroke="#FEFEFE" stroke-width="10" />
+    <line x1="1290" y1="520" x2="1160" y2="650" stroke="#FEFEFE" stroke-width="10" />
+    <line x1="1290" y1="480" x2="1120" y2="650" stroke="#FEFEFE" stroke-width="10" />
+    <line x1="1290" y1="440" x2="1080" y2="650" stroke="#FEFEFE" stroke-width="10" />
+    <line x1="1290" y1="400" x2="1040" y2="650" stroke="#FEFEFE" stroke-width="10" />
+    <line x1="1290" y1="360" x2="1000" y2="650" stroke="#FEFEFE" stroke-width="10" />
+    <line x1="1290" y1="320" x2="960" y2="650" stroke="#FEFEFE" stroke-width="10" />
+    <line x1="1290" y1="280" x2="920" y2="650" stroke="#FEFEFE" stroke-width="10" />
+    <line x1="1290" y1="240" x2="880" y2="650" stroke="#FEFEFE" stroke-width="10" />
+
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white"
+        font-size="96" font-family="Arial" font-weight="bold">cherrilog</text>
+    <text x="50%" y="63%" dominant-baseline="middle" text-anchor="middle" fill="#F43B76"
+        font-size="24" font-family="Arial" font-weight="bold">DART PACKAGE</text>
+    <rect x="34.3%" y="70%" width="400" height="40" rx="20" ry="20" fill="#F43B76" />
+    <text x="50%" y="73.2%" dominant-baseline="middle" text-anchor="middle" fill="white"
+        font-size="20" font-family="Arial">A POWERFUL LOGGING FRAMEWORK</text>
+
+    <svg xmlns="http://www.w3.org/2000/svg" x="160" y="-150" width="1280px" height="640px"
+        viewBox="0 0 64 64" fill="none">
+        <path
+            d="m11.061 35.949-2.567-2.567A1.746 1.746 0 0 1 8 32.196c0-.2.112-.512.197-.691l2.37-4.938.494 9.382z"
+            fill="#01579B" />
+        <path
+            d="m19.85 27.061-2.567-2.567c-.223-.225-.69-.494-1.086-.494-.34 0-.672.068-.889.197l-4.74 2.37 9.283.494zM14.123 39.01h6.222v-2.666l-4.642-1.482-4.246 1.481 2.666 2.667z"
+            fill="#40C4FF" />
+        <path d="M10.569 34.567c0 .792.099.987.493 1.383l.395.395h8.888L16 31.408l-5.431-4.84v8z"
+            fill="#29B6F6" />
+        <path
+            d="M18.468 26.567h-7.9l9.776 9.777h2.666V30.22l-3.16-3.16c-.443-.445-.837-.494-1.382-.494z"
+            fill="#01579B" />
+        <path opacity=".2"
+            d="M11.16 36.048c-.394-.397-.493-.787-.493-1.48v-7.901l-.1-.1v8c.002.694.002.886.594 1.481l.296.297-.296-.297z"
+            fill="#ffffff" />
+        <path opacity=".2" d="M22.912 30.123v6.122h-2.666l.099.099h2.667v-6.122l-.1-.1z"
+            fill="#263238" />
+        <path opacity=".2"
+            d="M19.85 27.061c-.489-.49-.89-.494-1.48-.494h-7.802l.1.1h7.703c.293 0 1.038-.05 1.48.394z"
+            fill="#ffffff" />
+        <path opacity=".2"
+            d="M22.912 30.123 19.85 27.06l-2.568-2.567c-.224-.225-.691-.494-1.086-.494-.34 0-.673.068-.889.197l-4.74 2.37-2.37 4.938c-.085.18-.197.491-.197.691 0 .431.19.872.494 1.186l2.366 2.349c.057.069.123.14.202.218l.1.1.296.296 2.568 2.567.099.1h6.222v-2.667h2.666V30.222l-.102-.1z"
+            fill="url(#a)" />
+        <defs>
+            <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(15.507 31.505) scale(7.50631)">
+                <stop stop-color="#ffffff" stop-opacity=".1" />
+                <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+        </defs>
+    </svg>
+</svg>
+  

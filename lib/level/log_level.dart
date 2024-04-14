@@ -1,7 +1,7 @@
 ﻿class CherriLogLevel {
   static CherriLogLevel any = CherriLogLevel('Any', 'ANY');
 
-  static CherriLogLevel fatal = CherriLogLevel('Fatal', 'FAT')..ansiColor = '91m';
+  static CherriLogLevel fatal = CherriLogLevel('Fatal', 'FTL')..ansiColor = '91m';
 
   static CherriLogLevel error = CherriLogLevel('Error', 'ERR')..ansiColor = '31m';
 

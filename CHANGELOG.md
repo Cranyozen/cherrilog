@@ -1,8 +1,15 @@
+## 0.1.1+1
+
+- Updated README.md and added new banner images.
+
+## 0.1.1
+
+- Refactored implementation of `CherriLogLevel`.
+
 ## 0.1.0+3
 
 - Fix dependencies.  
   Now you can import this package in dart and flutter.
-
 
 ## 0.1.0+2
 
@@ -14,5 +21,6 @@
 
 ## 0.1.0
 
-Initial release of CherriLog.  
+Initial release of CherriLog.
+
 - Basic logging functionality.

@@ -1,38 +1,34 @@
 /// Cherri log levels.
-/// Ranking of importance from highest to lowest
-///
-/// # WARN !!!
-///
-/// Don't change the order of the enum values, it will break the log level comparison.
+/// The higher the importance value, the more important the rank is.
 enum CherriLogLevel {
   /// All log level.
-  all('ALL'),
+  all('ALL', 1000),
 
   /// Fatal log level.
-  fatal('FTL'),
+  fatal('FTL', 500),
 
   /// Error log level.
-  error('ERR'),
+  error('ERR', 400),
 
   /// Warning log level.
-  warning('WAR'),
+  warning('WAR', 300),
 
   /// Info log level.
-  info('INF'),
+  info('INF', 200),
 
   /// Debug log level.
-  debug('DBG'),
+  debug('DBG', 100),
 
   /// Off log level.
-  off('OFF');
+  off('OFF', 0);
 
-  const CherriLogLevel(this.name);
+  const CherriLogLevel(this.name, this.importance);
 
   final String name;
+  final int importance;
 
-  // The use of index comparison levels is not elegant enough.
-  bool operator >(CherriLogLevel other) => other.index > index;
-  bool operator >=(CherriLogLevel other) => other.index >= index;
-  bool operator <(CherriLogLevel other) => other.index < index;
-  bool operator <=(CherriLogLevel other) => other.index <= index;
+  bool operator >(CherriLogLevel other) => importance > other.importance;
+  bool operator >=(CherriLogLevel other) => importance >= other.importance;
+  bool operator <(CherriLogLevel other) => importance < other.importance;
+  bool operator <=(CherriLogLevel other) => importance <= other.importance;
 }

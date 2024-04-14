@@ -2,11 +2,11 @@ import 'package:cherrilog/cherrilog.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('A group of normal logs', () {
+  group('A group of normal logs to console', () {
     setUp(() {
       CherriLog.init(
         options: CherriOptions()
-          ..logLevelRange = (CherriLogLevel.max, CherriLogLevel.min)
+          ..logLevelRange = CherriLogLevelRanges.all
           ..timeStampPattern = CherriFormatterTimeStampPattern.standardLongDateTime
           ..useBuffer = false,
       ).logTo(CherriConsole());

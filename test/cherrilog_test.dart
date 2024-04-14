@@ -7,7 +7,7 @@ void main() {
       CherriLog.init(
         options: CherriOptions()
           ..maximumLevel = CherriLogLevel.all
-          ..minimumLevel = CherriLogLevel.off
+          ..minimumLevel = CherriLogLevel.any
           ..timeStampPattern = CherriFormatterTimeStampPattern.standardLongDateTime
           ..useBuffer = false,
       ).logTo(CherriConsole());

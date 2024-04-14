@@ -9,8 +9,8 @@ export 'package:cherrilog/wrapper.dart';
 export 'package:cherrilog/formatter/timestamp.dart';
 export 'package:cherrilog/logger/logger.dart';
 export 'package:cherrilog/logger/loggers/logger_console.dart';
+export 'package:cherrilog/level/log_level.dart';
 export 'package:cherrilog/model/options.dart';
-export 'package:cherrilog/model/log_level.dart';
 
 class CherriLog {
   static CherriLog? instance;

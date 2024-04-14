@@ -4,7 +4,7 @@ void main() {
   CherriLog.init(
     options: CherriOptions()
       ..maximumLevel = CherriLogLevel.all
-      ..minimumLevel = CherriLogLevel.off,
+      ..minimumLevel = CherriLogLevel.any,
   ).logTo(CherriConsole());
 
   debug('You are doing something right');

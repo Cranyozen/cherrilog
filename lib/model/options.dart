@@ -1,10 +1,10 @@
 ﻿import 'package:cherrilog/formatter/timestamp.dart';
-import 'package:cherrilog/model/log_level.dart';
+import 'package:cherrilog/level/log_level.dart';
 
 class CherriOptions {
-  CherriLogLevel maximumLevel = CherriLogLevel.warning;
+  CherriLogLevel maximumLevel = CherriLogLevel.all;
 
-  CherriLogLevel minimumLevel = CherriLogLevel.all;
+  CherriLogLevel minimumLevel = CherriLogLevel.warning;
 
   String timeStampPattern = CherriFormatterTimeStampPattern.standardLongDateTime;
 

@@ -1,7 +1,7 @@
+import 'package:cherrilog/level/log_level.dart';
 import 'package:stack_trace/stack_trace.dart';
 import 'package:cherrilog/formatter/timestamp.dart';
 import 'package:cherrilog/model/message.dart';
-import 'package:cherrilog/model/log_level.dart';
 
 abstract class CherriFormatterMessageBase<T> {
   T format(CherriMessage message);
@@ -27,7 +27,7 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
   @override
   String format(CherriMessage message) {
     var timestamp = _addCostumeSplitter(CherriFormatterTimeStamp.format(message.timestamp, timestampPattern));
-    var logLevel = _addCostumeSplitter(message.logLevel.name);
+    var logLevel = _addCostumeSplitter(message.logLevel.abbreviation);
     var className = _addCostumeSplitter(message.className);
     var methodName = _addCostumeSplitter(message.methodName);
     var stackTrace = message.stackTrace;
@@ -69,19 +69,8 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
   String _addCostumeSplitter(String? message) => message == null || message == '' ? '' : costumeSplitterOpen + message + costumeSplitterClose;
 
   String _colorize(String message, CherriLogLevel logLevel) {
-    switch (logLevel) {
-      case CherriLogLevel.fatal:
-        return '\x1B[91m$message\x1B[0m';
-      case CherriLogLevel.error:
-        return '\x1B[31m$message\x1B[0m';
-      case CherriLogLevel.warning:
-        return '\x1B[33m$message\x1B[0m';
-      case CherriLogLevel.info:
-        return '\x1B[32m$message\x1B[0m';
-      case CherriLogLevel.debug:
-        return '\x1B[34m$message\x1B[0m';
-      default:
-        return message;
-    }
+    if (logLevel.ansiColor == null) return message;
+
+    return logLevel.ansiColorTemplate.replaceFirst("@message", message);
   }
 }

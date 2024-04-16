@@ -1,4 +1,4 @@
-![poster](./art/banner.png)
+![banner](https://raw.githubusercontent.com/Cranyozen/cherrilog/main/art/banner.png)
 
 # Overview
 
@@ -80,12 +80,14 @@ You can also use your own format.
 
 ## Output
 
-<pre>
-<span style="color: #2472C8">[2024-04-13 18:07:28] [DBG] This is a debug message</span>
-<span style="color: #0DBC79">[2024-04-13 18:07:28] [INF] This is an info message</span>
-<span style="color: #E5E510">[2024-04-13 18:07:28] [WRN] This is a warning message</span>
-<span style="color: #CD3131">[2024-04-13 18:07:28] [ERR] Something went wrong</span>
-<span style="color: #FCA5E5">[2024-04-13 18:07:28] [FTL] Oh oh :(</span>
-</pre>
+![demo output](https://i.imgur.com/P2RkoiC.png)
 
 *Note: The colors may vary depending on the terminal. This is probably the result on VSCode. [Reference](https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit)*
+
+# Contributors
+
+[![Contributors](https://contrib.rocks/image?repo=Cranyozen/cherrilog)](https://github.com/Cranyozen/cherrilog/graphs/contributors)
+
+# Star History
+
+[![Star History Chart](https://starchart.cc/Cranyozen/cherrilog.svg?variant=adaptive)](https://starchart.cc/Cranyozen/cherrilog)

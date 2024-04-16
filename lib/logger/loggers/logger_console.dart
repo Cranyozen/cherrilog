@@ -11,10 +11,16 @@ class CherriConsole extends CherriLogger {
     );
 
     if (message.logLevel.inRange(options.logLevelRange)) {
-      print(formatter.format(message));
+      var formattedMessage = formatter.format(message).replaceAll("\r", "");
+
+      for (var line in formattedMessage.split('\n')) {
+        pushLine(line);
+      }
     }
   }
 
   @override
-  void flush() {}
+  void flush() {
+    print(buffer.join('\n'));
+  }
 }

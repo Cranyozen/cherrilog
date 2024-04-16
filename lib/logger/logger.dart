@@ -8,6 +8,18 @@ abstract class CherriLogger {
     this.options = options;
   }
 
+  final buffer = <String>[];
+
+  void pushLine(String line) {
+    buffer.add(line);
+
+    if (options.useBuffer == false || buffer.length >= options.bufferLineLength) {
+      flush();
+
+      buffer.clear();
+    }
+  }
+
   void log(CherriMessage message);
 
   void flush();

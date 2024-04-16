@@ -1,4 +1,4 @@
-﻿import 'dart:math' as math show max, min;
+import 'dart:math' as math show max, min;
 
 class CherriLogLevel {
   /// Don't use this level directly
@@ -19,7 +19,15 @@ class CherriLogLevel {
 
   static CherriLogLevel debug = CherriLogLevel('Debug', 'DBG', ansiColor: '34m');
 
-  static List<CherriLogLevel> order = [nether, fatal, error, warning, info, debug, upperBond];
+  static List<CherriLogLevel> order = [
+    nether,
+    fatal,
+    error,
+    warning,
+    info,
+    debug,
+    upperBond,
+  ];
 
   static void insertLevelAfter(CherriLogLevel origin, CherriLogLevel level) {
     order.insert(order.indexOf(origin), level);

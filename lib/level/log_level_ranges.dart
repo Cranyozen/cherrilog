@@ -1,4 +1,4 @@
-﻿import 'package:cherrilog/level/log_level.dart';
+import 'package:cherrilog/level/log_level.dart';
 
 class CherriLogLevelRanges {
   static (CherriLogLevel, CherriLogLevel) all = (CherriLogLevel.nether, CherriLogLevel.upperBond);

@@ -37,10 +37,6 @@ class CherriLog {
   void log(CherriMessage message) {
     logger.log(message);
 
-    if (options.useBuffer == false) {
-      logger.flush();
-    }
-
     // TODO: Implement flush interval
   }
 }

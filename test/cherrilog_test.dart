@@ -1,4 +1,6 @@
 import 'package:cherrilog/cherrilog.dart';
+import 'package:cherrilog/logger/loggers/logger_file.dart';
+import 'package:dart_art/dart_art.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -32,6 +34,33 @@ void main() {
 
     test('fatal level', () {
       fatal('The power is off');
+    });
+  });
+
+  group('A group of normal logs to file', () {
+    setUp(() {
+      CherriLog.init(
+        options: CherriOptions()
+          ..logLevelRange = CherriLogLevelRanges.all
+          ..useBuffer = false
+          ..timeStampPattern = CherriFormatterTimeStampPattern.standardLongDateTime,
+      ).logTo(CherriFile());
+    });
+
+    test('All level log test', () {
+      debug('You are doing something right');
+      info('You are doing something');
+      warning('You are doing something wrong');
+      error('You can not shutdown power');
+      fatal('The power is off');
+    });
+
+    test('Outer single file size test', () {
+      (CherriLog.instance!.logger as CherriFile).singleFileSizeLimit = BinarySize.parse('256 B')!;
+
+      for (var i = 0; i < 10; ++i) {
+        info('A' * 300);
+      }
     });
   });
 }

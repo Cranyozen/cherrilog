@@ -13,7 +13,7 @@ class CherriLogLevel {
 
   static CherriLogLevel error = CherriLogLevel('Error', 'ERR', ansiColor: '31m');
 
-  static CherriLogLevel warning = CherriLogLevel('Warning', 'WAR', ansiColor: '33m');
+  static CherriLogLevel warning = CherriLogLevel('Warning', 'WRN', ansiColor: '33m');
 
   static CherriLogLevel info = CherriLogLevel('Info', 'INF', ansiColor: '32m');
 

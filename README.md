@@ -10,11 +10,12 @@ CherriLog is perhaps the simplest and most useful log library for all dart progr
 - Nice stacktrace formatter
 - Custom log levels support
 - Custom loggers:
-  - Direct output to console with different colors
+  - [CherriConsole](./lib/logger/loggers/logger_console.dart) Direct output to console with different colors
+  - [CherriFile](./lib/logger/loggers/logger_file.dart) Direct output to file
 
 ## TODOs
 
-- [ ] Log to file (Full Platform Support)
+- [ ] Log to file (Full Platform Path Support)
 - [ ] Highly customizable log format
 
 ## Usage
@@ -45,7 +46,7 @@ CherriLog is perhaps the simplest and most useful log library for all dart progr
      options: CherriOptions()
        ..logLevelRange = CherriLogLevelRanges.all
        ..useBuffer = false,
-   ).logTo(CherriConsole());
+   ).logTo(CherriConsole()); // Use `CherriFile()` instead of `CherriConsole` if you want to log to file system
    ```
 
 4. Call log methods
@@ -80,7 +81,7 @@ You can also use your own format.
 
 ## Output
 
-![demo output](https://i.imgur.com/P2RkoiC.png)
+![Demo Outputs](https://i.imgur.com/TSJ0XJZ.png)
 
 *Note: The colors may vary depending on the terminal. This is probably the result on VSCode. [Reference](https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit)*
 

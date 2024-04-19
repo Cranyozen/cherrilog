@@ -16,7 +16,8 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
   bool autoColorize;
 
   CherriFormatterMessageDefault({
-    this.timestampPattern = CherriFormatterTimeStampPattern.standardLongDateTime,
+    this.timestampPattern =
+        CherriFormatterTimeStampPattern.standardLongDateTime,
     this.costumeSplitter = '',
     this.costumeSplitterOpen = '[',
     this.costumeSplitterClose = ']',
@@ -26,7 +27,8 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
 
   @override
   String format(CherriMessage message) {
-    var timestamp = _addCostumeSplitter(CherriFormatterTimeStamp.format(message.timestamp, timestampPattern));
+    var timestamp = _addCostumeSplitter(
+        CherriFormatterTimeStamp.format(message.timestamp, timestampPattern));
     var logLevel = _addCostumeSplitter(message.logLevel.abbreviation);
     var className = _addCostumeSplitter(message.className);
     var methodName = _addCostumeSplitter(message.methodName);
@@ -66,7 +68,10 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
     return formattedMessage;
   }
 
-  String _addCostumeSplitter(String? message) => message == null || message == '' ? '' : costumeSplitterOpen + message + costumeSplitterClose;
+  String _addCostumeSplitter(String? message) =>
+      message == null || message == ''
+          ? ''
+          : costumeSplitterOpen + message + costumeSplitterClose;
 
   String _colorize(String message, CherriLogLevel logLevel) {
     if (logLevel.ansiColor == null) return message;

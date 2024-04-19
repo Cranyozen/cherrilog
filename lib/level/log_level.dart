@@ -1,4 +1,4 @@
-﻿import 'dart:math' as math show max, min;
+import 'dart:math' as math show max, min;
 
 class CherriLogLevel {
   /// Don't use this level directly
@@ -9,17 +9,29 @@ class CherriLogLevel {
   /// Please use [CherriLogLevelRanges] instead
   static CherriLogLevel upperBond = CherriLogLevel('Upper bond', 'UPP');
 
-  static CherriLogLevel fatal = CherriLogLevel('Fatal', 'FTL', ansiColor: '35m');
+  static CherriLogLevel fatal =
+      CherriLogLevel('Fatal', 'FTL', ansiColor: '35m');
 
-  static CherriLogLevel error = CherriLogLevel('Error', 'ERR', ansiColor: '31m');
+  static CherriLogLevel error =
+      CherriLogLevel('Error', 'ERR', ansiColor: '31m');
 
-  static CherriLogLevel warning = CherriLogLevel('Warning', 'WAR', ansiColor: '33m');
+  static CherriLogLevel warning =
+      CherriLogLevel('Warning', 'WAR', ansiColor: '33m');
 
   static CherriLogLevel info = CherriLogLevel('Info', 'INF', ansiColor: '32m');
 
-  static CherriLogLevel debug = CherriLogLevel('Debug', 'DBG', ansiColor: '34m');
+  static CherriLogLevel debug =
+      CherriLogLevel('Debug', 'DBG', ansiColor: '34m');
 
-  static List<CherriLogLevel> order = [nether, fatal, error, warning, info, debug, upperBond];
+  static List<CherriLogLevel> order = [
+    nether,
+    fatal,
+    error,
+    warning,
+    info,
+    debug,
+    upperBond
+  ];
 
   static void insertLevelAfter(CherriLogLevel origin, CherriLogLevel level) {
     order.insert(order.indexOf(origin), level);

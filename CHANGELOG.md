@@ -1,3 +1,7 @@
+## 0.2.0
+
+- You can log to file system by providing `CherriFile` logger to `CherriLog.logTo` method.
+
 ## 0.1.1+1
 
 - Updated README.md and added new banner images.

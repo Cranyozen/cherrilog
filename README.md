@@ -1,4 +1,4 @@
-![poster](./art/banner.png)
+![banner](https://raw.githubusercontent.com/Cranyozen/cherrilog/main/art/banner.png)
 
 # Overview
 
@@ -10,11 +10,12 @@ CherriLog is perhaps the simplest and most useful log library for all dart progr
 - Nice stacktrace formatter
 - Custom log levels support
 - Custom loggers:
-  - Direct output to console with different colors
+  - [CherriConsole](./lib/logger/loggers/logger_console.dart) Direct output to console with different colors
+  - [CherriFile](./lib/logger/loggers/logger_file.dart) Direct output to file
 
 ## TODOs
 
-- [ ] Log to file (Full Platform Support)
+- [ ] Log to file (Full Platform Path Support)
 - [ ] Highly customizable log format
 
 ## Usage
@@ -45,7 +46,7 @@ CherriLog is perhaps the simplest and most useful log library for all dart progr
      options: CherriOptions()
        ..logLevelRange = CherriLogLevelRanges.all
        ..useBuffer = false,
-   ).logTo(CherriConsole());
+   ).logTo(CherriConsole()); // Use `CherriFile()` instead of `CherriConsole` if you want to log to file system
    ```
 
 4. Call log methods
@@ -80,12 +81,14 @@ You can also use your own format.
 
 ## Output
 
-<pre>
-<span style="color: #2472C8">[2024-04-13 18:07:28] [DBG] This is a debug message</span>
-<span style="color: #0DBC79">[2024-04-13 18:07:28] [INF] This is an info message</span>
-<span style="color: #E5E510">[2024-04-13 18:07:28] [WRN] This is a warning message</span>
-<span style="color: #CD3131">[2024-04-13 18:07:28] [ERR] Something went wrong</span>
-<span style="color: #FCA5E5">[2024-04-13 18:07:28] [FTL] Oh oh :(</span>
-</pre>
+![Demo Outputs](https://i.imgur.com/TSJ0XJZ.png)
 
 *Note: The colors may vary depending on the terminal. This is probably the result on VSCode. [Reference](https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit)*
+
+# Contributors
+
+[![Contributors](https://contrib.rocks/image?repo=Cranyozen/cherrilog)](https://github.com/Cranyozen/cherrilog/graphs/contributors)
+
+# Star History
+
+[![Star History Chart](https://starchart.cc/Cranyozen/cherrilog.svg?variant=adaptive)](https://starchart.cc/Cranyozen/cherrilog)

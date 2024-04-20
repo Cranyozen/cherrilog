@@ -5,7 +5,7 @@ void main() {
     options: CherriOptions()
       ..logLevelRange = CherriLogLevelRanges.all
       ..useBuffer = false,
-  ).logTo(CherriConsole());
+  ).logTo(CherriConsole()); // Use `CherriFile()` instead of `CherriConsole` if you want to log to file system
 
   debug('You are doing something right');
 

@@ -1,4 +1,4 @@
-﻿import 'package:cherrilog/formatter/timestamp.dart';
+import 'package:cherrilog/formatter/timestamp.dart';
 import 'package:cherrilog/level/log_level.dart';
 import 'package:cherrilog/level/log_level_ranges.dart';
 

@@ -8,5 +8,12 @@ class CherriMessage {
   DateTime timestamp;
   StackTrace? stackTrace;
 
-  CherriMessage(this.logLevel, this.message, this.timestamp, {this.className, this.methodName, this.stackTrace});
+  CherriMessage(
+    this.logLevel,
+    this.message,
+    this.timestamp, {
+    this.className,
+    this.methodName,
+    this.stackTrace,
+  });
 }

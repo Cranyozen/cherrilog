@@ -1,5 +1,4 @@
 import 'package:cherrilog/cherrilog.dart';
-import 'package:cherrilog/logger/loggers/logger_file.dart';
 import 'package:dart_art/dart_art.dart';
 import 'package:test/test.dart';
 

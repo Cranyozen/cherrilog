@@ -54,7 +54,7 @@ class CherriFile extends CherriLogger {
 
     var file = File('$location/$fileName');
     if (file.existsSync()) {
-      var size = BinarySize()..bytesCount = file.lengthSync();
+      var size = BinarySize()..bytesCount = BigInt.from(file.lengthSync());
       if (size > singleFileSizeLimit) {
         _fileId = getNextId();
         return getFileName();

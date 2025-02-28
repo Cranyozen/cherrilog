@@ -7,7 +7,7 @@ environment:
   sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
-  dart_art: ^0.1.0+1
+  dart_art: ^0.1.1
   intl: ^0.20.0
   stack_trace: ^1.11.1
 

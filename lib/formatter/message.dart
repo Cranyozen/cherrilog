@@ -75,6 +75,9 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
     if (message.error != null) {
       if (autoFormatTrace && stackTraceStyle == StackTraceStyle.tab) {
         formattedMessage += '\n\t${message.error}';
+      } else if (autoFormatTrace) {
+        // align mode: indent error line to the same column as stack frames.
+        formattedMessage += '\n${' ' * aheadLength}${message.error}';
       } else {
         formattedMessage += '\n${message.error}';
       }

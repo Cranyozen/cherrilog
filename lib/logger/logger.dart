@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cherrilog/cherrilog.dart';
-import 'package:cherrilog/model/message.dart';
 
 abstract class CherriLogger {
   late CherriOptions options;

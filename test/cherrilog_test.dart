@@ -77,17 +77,24 @@ void main() {
     });
 
     test('error with stackTrace prints frames aligned to body', () {
-      // In align mode, stack frames are right-padded with spaces so they
-      // start at the same column as the message body.
-      // On screen you'll see:
-      //   [timestamp] [ERR] [cls] [mtd] message body
-      //                                  frame:1 ...
-      //                                  frame:2 ...
+      // Visual output (keep for human inspection).
       error(
         'error message with align style',
         error: Exception('test error'),
         stackTrace: StackTrace.current,
       );
+
+      // Assert: formatter output has right-aligned frames (spaces before frame text).
+      final fmt = CherriFormatterMessageDefault(stackTraceStyle: StackTraceStyle.align);
+      final msg = CherriMessage(CherriLogLevel.error, 'test', DateTime(2025, 1, 1),
+        error: Exception('boom'),
+        stackTrace: StackTrace.current,
+      );
+      final output = fmt.format(msg);
+      final frameLines = output.split('\n').where((l) => l.contains('cherrilog_test.dart'));
+      expect(frameLines.isNotEmpty, isTrue);
+      // At least one frame should start with significant right-padding.
+      expect(frameLines.any((l) => l.startsWith(' ' * 20)), isTrue);
     });
   });
 
@@ -105,17 +112,26 @@ void main() {
     });
 
     test('error with stackTrace prints frames with tab indent', () {
-      // In tab mode, each stack frame starts on a new line with a '\t' prefix.
-      // The message body stays close to the prefix, and frames are indented
-      // by a single tab character:
-      //   [timestamp] [ERR] [cls] [mtd] message body
-      //   	frame:1 ...
-      //   	frame:2 ...
+      // Visual output (keep for human inspection).
       error(
         'error message with tab style',
         error: Exception('test error'),
         stackTrace: StackTrace.current,
       );
+
+      // Assert: formatter output has tab-indented frames.
+      final fmt = CherriFormatterMessageDefault(stackTraceStyle: StackTraceStyle.tab);
+      final msg = CherriMessage(CherriLogLevel.error, 'test', DateTime(2025, 1, 1),
+        error: Exception('boom'),
+        stackTrace: StackTrace.current,
+      );
+      final output = fmt.format(msg);
+      final frameLines = output.split('\n').where((l) => l.contains('cherrilog_test.dart'));
+      expect(frameLines.isNotEmpty, isTrue);
+      // Every frame line should start with a tab.
+      for (final line in frameLines) {
+        expect(line, startsWith('\t'));
+      }
     });
   });
 }

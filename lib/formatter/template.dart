@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cherrilog/formatter/message.dart';
 import 'package:cherrilog/formatter/timestamp.dart';
 import 'package:cherrilog/model/message.dart';
@@ -80,33 +82,36 @@ class CherriFormatterMessageTemplate extends CherriFormatterMessageBase<String> 
   }
 
   String _formatJson(CherriMessage message) {
-    final parts = <String>[
-      '"timestamp":"${CherriFormatterTimeStamp.format(message.timestamp, timestampPattern)}"',
-      '"level":"${message.logLevel.abbreviation}"',
-      '"levelName":"${message.logLevel.name}"',
-      '"message":"${_escapeJson(message.message)}"',
-    ];
+    final map = <String, String>{
+      'timestamp': CherriFormatterTimeStamp.format(message.timestamp, timestampPattern),
+      'level': message.logLevel.abbreviation,
+      'levelName': message.logLevel.name,
+      'message': message.message,
+    };
     if (message.className != null && message.className!.isNotEmpty) {
-      parts.add('"className":"${_escapeJson(message.className!)}"');
+      map['className'] = message.className!;
     }
     if (message.methodName != null && message.methodName!.isNotEmpty) {
-      parts.add('"methodName":"${_escapeJson(message.methodName!)}"');
+      map['methodName'] = message.methodName!;
     }
     if (message.error != null) {
-      parts.add('"error":"${_escapeJson(message.error.toString())}"');
+      map['error'] = message.error.toString();
     }
-    return '{${parts.join(',')}}';
-  }
-
-  String _escapeJson(String s) {
-    return s.replaceAll('\\', '\\\\').replaceAll('"', '\\"').replaceAll('\n', '\\n').replaceAll('\r', '\\r').replaceAll('\t', '\\t');
+    if (message.stackTrace != null) {
+      map['stackTrace'] = _formatStackTrace(message.stackTrace);
+    }
+    return jsonEncode(map);
   }
 
   String _formatStackTrace(StackTrace? stackTrace) {
     if (stackTrace == null) return '';
     final chain = Chain.forTrace(stackTrace);
     final lines = <String>[];
-    final indent = (autoFormatTrace && stackTraceStyle == StackTraceStyle.tab) ? '\t' : '';
+    final indent = !autoFormatTrace
+        ? ''
+        : stackTraceStyle == StackTraceStyle.tab
+            ? '\t'
+            : '    '; // align mode → 4-space indent
     for (final trace in chain.traces) {
       if (trace != chain.traces.first) {
         lines.add('$indent<asynchronous suspension>');

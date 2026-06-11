@@ -1,5 +1,4 @@
 ﻿import 'package:cherrilog/cherrilog.dart';
-import 'package:cherrilog/model/message.dart';
 import 'package:stack_trace/stack_trace.dart';
 
 /// Extracts the class name from a stack frame member string.
@@ -50,7 +49,7 @@ void warning(String message, {Object? error, StackTrace? stackTrace}) {
     className: _extractClassName(caller),
     methodName: _extractMethodName(caller),
     error: error,
-    stackTrace: stackTrace ?? StackTrace.current,
+    stackTrace: stackTrace,
   ));
 }
 
@@ -60,7 +59,7 @@ void info(String message, {Object? error, StackTrace? stackTrace}) {
     className: _extractClassName(caller),
     methodName: _extractMethodName(caller),
     error: error,
-    stackTrace: stackTrace ?? StackTrace.current,
+    stackTrace: stackTrace,
   ));
 }
 
@@ -70,6 +69,6 @@ void debug(String message, {Object? error, StackTrace? stackTrace}) {
     className: _extractClassName(caller),
     methodName: _extractMethodName(caller),
     error: error,
-    stackTrace: stackTrace ?? StackTrace.current,
+    stackTrace: stackTrace,
   ));
 }

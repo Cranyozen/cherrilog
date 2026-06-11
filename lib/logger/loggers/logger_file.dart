@@ -16,10 +16,10 @@ class CherriFile extends CherriLogger {
   /// | Linux    | `$HOME/.local/share/cherrilog/logs` |
   /// | macOS    | `$HOME/Library/Logs/cherrilog` |
   /// | Windows  | `%APPDATA%/cherrilog/logs` |
-  /// | Android/iOS/Web | `./logs` (user should override) |
+  /// | Android/iOS | `./logs` (set via `path_provider` on Flutter) |
   ///
-  /// Mobile and Web users should set [location] explicitly using a
-  /// platform-appropriate directory (e.g. via `path_provider` on Flutter).
+  /// **Not available on Web** — [CherriFile] requires `dart:io`.
+  /// Use [CherriConsole] for logging on Web platforms.
   static String get defaultLocation {
     if (Platform.isWindows) {
       final appData = Platform.environment['APPDATA'];
@@ -47,7 +47,7 @@ class CherriFile extends CherriLogger {
 
   late BinarySize singleFileSizeLimit = BinarySize.parse('10 MB')!;
 
-  late int clearMode = CherriFileClearMode.oldFiles | CherriFileClearMode.outSizedFiles;
+  late int clearMode = CherriFileClearMode.oldFiles | CherriFileClearMode.outSizedFiles | CherriFileClearMode.maxFileCount;
 
   late int _fileId = 0;
 
@@ -182,9 +182,11 @@ class CherriFile extends CherriLogger {
       });
     }
 
-    // 2. Keep only the newest maxFilesCount files.
-    while (files.length > maxFilesCount) {
-      files.removeAt(0).deleteSync();
+    // 2. Keep only the newest maxFilesCount files (when maxFileCount flag is set).
+    if ((clearMode & CherriFileClearMode.maxFileCount) != 0) {
+      while (files.length > maxFilesCount) {
+        files.removeAt(0).deleteSync();
+      }
     }
 
     // 3. Remove oldest files until total size is within limit (outSizedFiles mode).
@@ -207,4 +209,6 @@ class CherriFileClearMode {
   static const oldFiles = 1;
 
   static const outSizedFiles = 2;
+
+  static const maxFileCount = 4;
 }

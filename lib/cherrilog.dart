@@ -7,6 +7,8 @@ import 'package:cherrilog/model/message.dart';
 export 'package:cherrilog/cherrilog.dart';
 export 'package:cherrilog/wrapper.dart';
 export 'package:cherrilog/formatter/timestamp.dart';
+export 'package:cherrilog/formatter/message.dart';
+export 'package:cherrilog/formatter/template.dart';
 export 'package:cherrilog/logger/logger.dart';
 export 'package:cherrilog/logger/loggers/logger_console.dart';
 export 'package:cherrilog/logger/loggers/logger_file.dart';
@@ -37,9 +39,5 @@ class CherriLog {
 
   void log(CherriMessage message) {
     logger.log(message);
-
-    // TODO: Implement flush interval
   }
 }
-
-extension CherriLogExtensions on CherriLog {}

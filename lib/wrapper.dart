@@ -1,22 +1,75 @@
 ﻿import 'package:cherrilog/cherrilog.dart';
 import 'package:cherrilog/model/message.dart';
+import 'package:stack_trace/stack_trace.dart';
+
+/// Extracts the class name from a stack frame member string.
+///
+/// [Frame.member] is typically `ClassName.methodName` or just `functionName`.
+String? _extractClassName(Frame frame) {
+  final member = frame.member;
+  if (member == null || member.isEmpty) return null;
+  final dotIndex = member.indexOf('.');
+  return dotIndex > 0 ? member.substring(0, dotIndex) : null;
+}
+
+/// Returns the full member signature from a stack frame.
+String? _extractMethodName(Frame frame) => frame.member;
+
+/// Finds the first caller frame outside the cherrilog package.
+Frame _findCallerFrame() {
+  final trace = Trace.current();
+  for (final frame in trace.frames) {
+    if (frame.package != 'cherrilog') return frame;
+  }
+  return trace.frames.first;
+}
 
 void fatal(String message, {Object? error, StackTrace? stackTrace}) {
-  CherriLog.instance?.log(CherriMessage(CherriLogLevel.fatal, message, DateTime.now()));
+  final caller = _findCallerFrame();
+  CherriLog.instance?.log(CherriMessage(CherriLogLevel.fatal, message, DateTime.now(),
+    className: _extractClassName(caller),
+    methodName: _extractMethodName(caller),
+    error: error,
+    stackTrace: stackTrace ?? StackTrace.current,
+  ));
 }
 
 void error(String message, {Object? error, StackTrace? stackTrace}) {
-  CherriLog.instance?.log(CherriMessage(CherriLogLevel.error, message, DateTime.now()));
+  final caller = _findCallerFrame();
+  CherriLog.instance?.log(CherriMessage(CherriLogLevel.error, message, DateTime.now(),
+    className: _extractClassName(caller),
+    methodName: _extractMethodName(caller),
+    error: error,
+    stackTrace: stackTrace ?? StackTrace.current,
+  ));
 }
 
 void warning(String message, {Object? error, StackTrace? stackTrace}) {
-  CherriLog.instance?.log(CherriMessage(CherriLogLevel.warning, message, DateTime.now()));
+  final caller = _findCallerFrame();
+  CherriLog.instance?.log(CherriMessage(CherriLogLevel.warning, message, DateTime.now(),
+    className: _extractClassName(caller),
+    methodName: _extractMethodName(caller),
+    error: error,
+    stackTrace: stackTrace ?? StackTrace.current,
+  ));
 }
 
 void info(String message, {Object? error, StackTrace? stackTrace}) {
-  CherriLog.instance?.log(CherriMessage(CherriLogLevel.info, message, DateTime.now()));
+  final caller = _findCallerFrame();
+  CherriLog.instance?.log(CherriMessage(CherriLogLevel.info, message, DateTime.now(),
+    className: _extractClassName(caller),
+    methodName: _extractMethodName(caller),
+    error: error,
+    stackTrace: stackTrace ?? StackTrace.current,
+  ));
 }
 
 void debug(String message, {Object? error, StackTrace? stackTrace}) {
-  CherriLog.instance?.log(CherriMessage(CherriLogLevel.debug, message, DateTime.now()));
+  final caller = _findCallerFrame();
+  CherriLog.instance?.log(CherriMessage(CherriLogLevel.debug, message, DateTime.now(),
+    className: _extractClassName(caller),
+    methodName: _extractMethodName(caller),
+    error: error,
+    stackTrace: stackTrace ?? StackTrace.current,
+  ));
 }

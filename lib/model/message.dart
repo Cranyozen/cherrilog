@@ -7,6 +7,7 @@ class CherriMessage {
   String message;
   DateTime timestamp;
   StackTrace? stackTrace;
+  Object? error;
 
   CherriMessage(
     this.logLevel,
@@ -15,5 +16,6 @@ class CherriMessage {
     this.className,
     this.methodName,
     this.stackTrace,
+    this.error,
   });
 }

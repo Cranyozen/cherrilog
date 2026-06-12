@@ -32,5 +32,12 @@ class CherriOptions {
 
   int bufferLineLength = 30;
 
+  /// When `true` (default), Dart core library frames (`package == null`) are
+  /// skipped when auto-detecting the caller's [className] and [methodName].
+  ///
+  /// Set to `false` to allow Dart core frames to be reported as the caller
+  /// (rarely useful; mostly for debugging the frame detection itself).
+  bool filterCoreFrames = true;
+
   Duration flushInterval = const Duration(milliseconds: 500);
 }

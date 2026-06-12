@@ -89,11 +89,8 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
       for (final trace in chain.traces) {
         // Add an async-gap separator when there are multiple traces.
         if (trace != chain.traces.first) {
-          if (autoFormatTrace && stackTraceStyle == StackTraceStyle.tab) {
-            formattedMessage += '\n\t<asynchronous suspension>';
-          } else {
-            formattedMessage += '\n${' ' * aheadLength}<asynchronous suspension>';
-          }
+          final gap = autoFormatTrace ? (stackTraceStyle == StackTraceStyle.tab ? '\t' : ' ' * aheadLength) : '';
+          formattedMessage += '\n$gap<asynchronous suspension>';
         }
 
         var frames = trace.frames.toList();
@@ -121,7 +118,8 @@ class CherriFormatterMessageDefault extends CherriFormatterMessageBase<String> {
     return formattedMessage;
   }
 
-  String _addCostumeSplitter(String? message) => message == null || message == '' ? '' : costumeSplitterOpen + message + costumeSplitterClose;
+  String _addCostumeSplitter(String? message) =>
+      message == null || message == '' ? '' : costumeSplitterOpen + message + costumeSplitterClose;
 
   String _colorize(String message, CherriLogLevel logLevel) {
     if (logLevel.ansiColor == null) return message;

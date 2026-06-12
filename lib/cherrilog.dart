@@ -4,7 +4,6 @@ import 'package:cherrilog/logger/logger.dart';
 import 'package:cherrilog/model/options.dart';
 import 'package:cherrilog/model/message.dart';
 
-export 'package:cherrilog/cherrilog.dart';
 export 'package:cherrilog/wrapper.dart';
 export 'package:cherrilog/formatter/timestamp.dart';
 export 'package:cherrilog/formatter/message.dart';

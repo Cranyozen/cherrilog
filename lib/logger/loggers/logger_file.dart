@@ -1,4 +1,4 @@
-﻿import 'dart:io';
+import 'dart:io';
 
 import 'package:cherrilog/formatter/message.dart';
 import 'package:cherrilog/formatter/template.dart';
@@ -159,11 +159,7 @@ class CherriFile extends CherriLogger {
     var dir = Directory(location);
     if (!dir.existsSync()) return;
 
-    var files = dir
-        .listSync()
-        .whereType<File>()
-        .where((f) => f.path.endsWith('.log'))
-        .toList();
+    var files = dir.listSync().whereType<File>().where((f) => f.path.endsWith('.log')).toList();
 
     if (files.isEmpty) return;
 

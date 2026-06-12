@@ -15,16 +15,23 @@ String? _extractClassName(Frame frame) {
 String? _extractMethodName(Frame frame) => frame.member;
 
 /// Finds the first caller frame outside the cherrilog package.
-Frame _findCallerFrame() {
+///
+/// Always skips frames from `cherrilog` and `stack_trace` packages.
+/// When [filterCoreFrames] is `true` (default), Dart core library frames
+/// (`package == null`) are also skipped.
+Frame _findCallerFrame({bool filterCoreFrames = true}) {
   final trace = Trace.current();
   for (final frame in trace.frames) {
-    if (frame.package != 'cherrilog') return frame;
+    final pkg = frame.package;
+    if (pkg == 'cherrilog' || pkg == 'stack_trace') continue;
+    if (filterCoreFrames && pkg == null) continue;
+    return frame;
   }
   return trace.frames.first;
 }
 
 void fatal(String message, {Object? error, StackTrace? stackTrace}) {
-  final caller = _findCallerFrame();
+  final caller = _findCallerFrame(filterCoreFrames: CherriLog.instance?.options.filterCoreFrames ?? true);
   CherriLog.instance?.log(CherriMessage(CherriLogLevel.fatal, message, DateTime.now(),
     className: _extractClassName(caller),
     methodName: _extractMethodName(caller),
@@ -34,7 +41,7 @@ void fatal(String message, {Object? error, StackTrace? stackTrace}) {
 }
 
 void error(String message, {Object? error, StackTrace? stackTrace}) {
-  final caller = _findCallerFrame();
+  final caller = _findCallerFrame(filterCoreFrames: CherriLog.instance?.options.filterCoreFrames ?? true);
   CherriLog.instance?.log(CherriMessage(CherriLogLevel.error, message, DateTime.now(),
     className: _extractClassName(caller),
     methodName: _extractMethodName(caller),
@@ -44,7 +51,7 @@ void error(String message, {Object? error, StackTrace? stackTrace}) {
 }
 
 void warning(String message, {Object? error, StackTrace? stackTrace}) {
-  final caller = _findCallerFrame();
+  final caller = _findCallerFrame(filterCoreFrames: CherriLog.instance?.options.filterCoreFrames ?? true);
   CherriLog.instance?.log(CherriMessage(CherriLogLevel.warning, message, DateTime.now(),
     className: _extractClassName(caller),
     methodName: _extractMethodName(caller),
@@ -54,7 +61,7 @@ void warning(String message, {Object? error, StackTrace? stackTrace}) {
 }
 
 void info(String message, {Object? error, StackTrace? stackTrace}) {
-  final caller = _findCallerFrame();
+  final caller = _findCallerFrame(filterCoreFrames: CherriLog.instance?.options.filterCoreFrames ?? true);
   CherriLog.instance?.log(CherriMessage(CherriLogLevel.info, message, DateTime.now(),
     className: _extractClassName(caller),
     methodName: _extractMethodName(caller),
@@ -64,7 +71,7 @@ void info(String message, {Object? error, StackTrace? stackTrace}) {
 }
 
 void debug(String message, {Object? error, StackTrace? stackTrace}) {
-  final caller = _findCallerFrame();
+  final caller = _findCallerFrame(filterCoreFrames: CherriLog.instance?.options.filterCoreFrames ?? true);
   CherriLog.instance?.log(CherriMessage(CherriLogLevel.debug, message, DateTime.now(),
     className: _extractClassName(caller),
     methodName: _extractMethodName(caller),
